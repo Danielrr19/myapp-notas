@@ -1,0 +1,259 @@
+// Estilos para el header (mismo estilo que create-task)
+ion-header {
+  ion-toolbar {
+    --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --color: white;
+
+    ion-title {
+      font-weight: 700;
+      font-size: 24px;
+    }
+  }
+}
+
+// Estilos para el contenido
+ion-content {
+  --background: linear-gradient(to bottom, #f9fafb 0%, #e5e7eb 100%);
+}
+
+// Lista de tareas completadas
+ion-list {
+  width: 100%;
+  max-width: 500px;
+  background: transparent;
+  padding: 24px 16px;
+  margin: 0 auto;
+}
+
+// Item de tarea completada
+ion-item {
+  --background: #ffffff;
+  --border-radius: 12px;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  --inner-padding-end: 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  // Borde izquierdo verde para tareas completadas
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);
+  }
+
+  // Icono de check
+  &::after {
+    content: '✓';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #22c55e;
+    font-size: 24px;
+    font-weight: bold;
+    opacity: 0.4;
+    transition: all 0.3s ease;
+  }
+
+  &:hover::after {
+    opacity: 0.7;
+    transform: translateY(-50%) scale(1.15);
+  }
+
+  ion-label {
+    margin: 16px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1f2937;
+    padding-right: 45px;
+
+    &.tachado {
+      text-decoration: line-through;
+      color: #22c55e;
+      opacity: 0.85;
+    }
+  }
+}
+
+// Contenedor centrado para mensaje vacío
+.h-70vh {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+
+  &::before {
+    content: '✓';
+    font-size: 80px;
+    color: #22c55e;
+    opacity: 0.2;
+    display: block;
+    font-weight: bold;
+  }
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #9ca3af;
+  text-align: center;
+  line-height: 1.6;
+}
+
+// Animación de entrada
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+ion-item {
+  animation: fadeInScale 0.4s ease forwards;
+  opacity: 0;
+
+  &:nth-child(1) { animation-delay: 0.05s; }
+  &:nth-child(2) { animation-delay: 0.1s; }
+  &:nth-child(3) { animation-delay: 0.15s; }
+  &:nth-child(4) { animation-delay: 0.2s; }
+  &:nth-child(5) { animation-delay: 0.25s; }
+  &:nth-child(n+6) { animation-delay: 0.3s; }
+}
+
+// Animación para el tachado
+@keyframes strikeThrough {
+  0% {
+    text-decoration: none;
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    text-decoration: line-through;
+    opacity: 0.85;
+  }
+}
+
+.tachado {
+  animation: strikeThrough 0.4s ease-in-out;
+}
+
+// Responsive para móviles
+@media (max-width: 576px) {
+  ion-list {
+    max-width: 100%;
+    padding: 16px 12px;
+  }
+
+  ion-item {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    margin-bottom: 12px;
+
+    &::after {
+      right: 16px;
+      font-size: 20px;
+    }
+
+    ion-label {
+      margin: 14px 0;
+      font-size: 15px;
+      padding-right: 40px;
+    }
+  }
+
+  .h-70vh {
+    height: 60vh;
+    gap: 12px;
+
+    &::before {
+      font-size: 64px;
+    }
+
+    font-size: 15px;
+  }
+
+  ion-header {
+    ion-toolbar {
+      ion-title {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+// Estado de carga suave
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+// Mejora visual para el ripple effect
+ion-item {
+  --ripple-color: rgba(34, 197, 94, 0.15);
+}
+
+// Hover states más suaves en desktop
+@media (hover: hover) {
+  ion-item {
+    &:hover {
+      --background: #f9fffe;
+      
+      ion-label.tachado {
+        color: #16a34a;
+      }
+    }
+  }
+}
+
+// Estilo para cuando hay muchas tareas (scroll)
+ion-list {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 4px;
+
+    &:hover {
+      background: #9ca3af;
+    }
+  }
+}

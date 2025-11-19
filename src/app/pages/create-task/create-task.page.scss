@@ -1,0 +1,217 @@
+// Estilos para el header (mismo estilo que list-task)
+ion-header {
+  ion-toolbar {
+    --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --color: white;
+
+    ion-title {
+      font-weight: 700;
+      font-size: 24px;
+    }
+  }
+}
+
+// Contenedor principal
+.container_input {
+  width: 100%;
+  min-height: calc(100vh - 56px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 24px;
+  background: linear-gradient(to bottom, #f9fafb 0%, #e5e7eb 100%);
+}
+
+// Lista del input
+ion-list {
+  width: 100%;
+  max-width: 500px;
+  background: transparent;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+// Item del input
+ion-item {
+  --background: #ffffff;
+  --border-radius: 12px;
+  --padding-start: 20px;
+  --padding-end: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 16px;
+
+  ion-input {
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1f2937;
+
+    &::placeholder {
+      color: #9ca3af;
+      font-weight: 400;
+    }
+  }
+}
+
+// Botones
+ion-button {
+  width: 100%;
+  max-width: 500px;
+  height: 50px;
+  margin-top: 12px;
+  --border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Botón de seleccionar foto
+ion-button[color="primary"] {
+  --background: #3b82f6;
+  --background-hover: #2563eb;
+  --background-activated: #1d4ed8;
+  margin-top: 20px;
+
+  &:hover {
+    --background: #2563eb;
+  }
+}
+
+// Botón de guardar tarea
+ion-button[color="success"] {
+  --background: #22c55e;
+  --background-hover: #16a34a;
+  --background-activated: #15803d;
+  margin-top: 12px;
+
+  &:hover {
+    --background: #16a34a;
+  }
+}
+
+// Contenedor de previsualización de foto
+div[ng-reflect-ng-if] {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 32px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  ion-img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Animación de entrada
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+ion-item,
+ion-button {
+  animation: fadeInScale 0.4s ease forwards;
+}
+
+ion-item {
+  animation-delay: 0.1s;
+}
+
+ion-button[color="primary"] {
+  animation-delay: 0.2s;
+}
+
+ion-button[color="success"] {
+  animation-delay: 0.25s;
+}
+
+// Mensaje de sin conexión
+.no-connection {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  background: #fee2e2;
+  border-radius: 12px;
+  margin-top: 20px;
+  border-left: 4px solid #ef4444;
+
+  h2 {
+    color: #ef4444;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+// Responsive para móviles
+@media (max-width: 576px) {
+  .container_input {
+    padding: 16px;
+  }
+
+  ion-list,
+  ion-button,
+  div[ng-reflect-ng-if] {
+    max-width: 100%;
+  }
+
+  ion-button {
+    height: 48px;
+    font-size: 15px;
+  }
+
+  div[ng-reflect-ng-if] {
+    h2 {
+      font-size: 16px;
+    }
+
+    ion-img {
+      max-height: 250px;
+    }
+  }
+}
+
+// Estado de enfoque en el input
+ion-item.item-has-focus {
+  --border-color: #667eea;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}

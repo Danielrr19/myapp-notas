@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/listTask"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle de la Tarea</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card class="task-detail-card" *ngIf="task">
+    <!-- Imagen de la tarea -->
+    <div class="image-container">
+      <img [src]="task.photoUrl" alt="Imagen de la tarea" *ngIf="task.photoUrl" />
+      <div class="no-image" *ngIf="!task.photoUrl">
+        <ion-icon name="image-outline"></ion-icon>
+        <p>Sin imagen</p>
+      </div>
+    </div>
+
+    <ion-card-content>
+      <!-- Título de la tarea -->
+      <div class="task-header">
+        <h1>{{ task.name }}</h1>
+        <ion-badge [color]="task.completed ? 'success' : 'warning'">
+          {{ task.completed ? 'Completada' : 'Pendiente' }}
+        </ion-badge>
+      </div>
+
+      <!-- Estado -->
+      <div class="detail-section">
+        <ion-icon name="checkmark-circle-outline" color="primary"></ion-icon>
+        <div class="detail-content">
+          <ion-label class="detail-label">Estado</ion-label>
+          <p class="detail-text">{{ task.completed ? 'Completada' : 'Pendiente' }}</p>
+        </div>
+      </div>
+
+      <!-- ID de la tarea -->
+      <div class="detail-section">
+        <ion-icon name="key-outline" color="primary"></ion-icon>
+        <div class="detail-content">
+          <ion-label class="detail-label">ID</ion-label>
+          <p class="detail-text">#{{ task.id }}</p>
+        </div>
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="action-buttons">
+        <ion-button expand="block" color="primary" (click)="editTask()">
+          <ion-icon slot="start" name="create-outline"></ion-icon>
+          Editar Tarea
+        </ion-button>
+        
+        
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Mensaje si no hay tarea -->
+  <div *ngIf="!task" class="no-task">
+    <ion-icon name="alert-circle-outline"></ion-icon>
+    <p>No se encontró la tarea</p>
+    <ion-button routerLink="/listTask" color="primary">
+      <ion-icon slot="start" name="arrow-back"></ion-icon>
+      Volver a tareas
+    </ion-button>
+  </div>
+</ion-content>

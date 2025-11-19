@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Tareas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+
+  <ion-list [inset]="true" *ngIf="isOnline">
+    <ion-item *ngFor="let task of tasks">
+
+      <ion-label>{{task.name}}</ion-label>
+
+      <ion-checkbox class="check" [checked]="task.completed" (ionChange)="completedTasks(task.id)" labelPlacement="end"></ion-checkbox>
+
+      <ion-button class="button-delete" (click)="deleteTasks(task.id)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="GoToDetails(task)" color="primary">
+        <ion-icon name="information-circle-outline"></ion-icon>
+      </ion-button>
+
+    </ion-item>
+
+    <span [ngClass]="{'h-70vh': tasks.length === 0}" *ngIf="tasks.length === 0">No hay tareas</span>
+
+  </ion-list>
+
+    <div *ngIf="!isOnline" [ngStyle]="{
+      'height': '80vh',
+      'display': 'flex',
+      'color': 'red',
+      'align-items': 'center',
+      'justify-content': 'center',
+    }">
+    <h2>No hay conexion a internet. Es posible que no pueda ejecutar funciones de la App.</h2>
+  </div>
+</ion-content>

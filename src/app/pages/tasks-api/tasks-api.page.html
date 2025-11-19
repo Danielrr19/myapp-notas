@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Tareas cargadas desde la API</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="error" *ngIf="errorMessage">
+    {{errorMessage}}
+  </div>
+</ion-content>
+
+<ion-list>
+  <ion-item *ngFor="let task of tasks">
+    <ion-label>{{task.id}}</ion-label>
+    <ion-label>{{task.title}}</ion-label>
+  </ion-item>
+</ion-list>
+
+<ion-footer class="fixed">
+  <ion-toolbar>
+    <ion-button (click)="goToPreviousPage()" [disabled]="page === 1" color="danger">Anterior</ion-button>
+    <ion-button (click)="goToNextPage()" [disabled]="finish" color="success">Siguiente</ion-button>
+  </ion-toolbar>
+</ion-footer>

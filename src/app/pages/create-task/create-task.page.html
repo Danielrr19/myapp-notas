@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Crear tarea</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="container_input">
+  <ion-list>
+    <ion-item>
+      <ion-input [(ngModel)]="titleTask" aria-label="Email" placeholder="Ingresar nueva Tarea"></ion-input>
+      </ion-item>
+  </ion-list>
+
+  <ion-button (click)="selectPhoto()" color="primary">Seleccionar foto</ion-button>
+    
+    <ion-button (click)="addTasksFunction()" color="success">Guardar tarea</ion-button>
+
+    <div *ngIf="photoUrl">
+      <h2>Previsualización de la Foto</h2>
+      <ion-img [src]="photoUrl"></ion-img>
+    </div>
+
+    <div *ngIf="!isOnline" [ngStyle]="{
+      
+    }">
+  
+</div>
+  

@@ -1,0 +1,190 @@
+// Estilos del checkbox
+.check::part(container) {
+  --border-color-checked: #22c55e;
+  --checkmark-color: white;
+  --checkbox-background-checked: #22c55e;
+  --border-radius: 8px;
+  --size: 24px;
+  --border-width: 2px;
+}
+
+// Contenedor principal de la lista
+ion-list {
+  background: transparent;
+  padding: 8px;
+}
+
+// Estilos para cada item de tarea
+ion-item {
+  --background: #ffffff;
+  --border-radius: 12px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --inner-padding-end: 0px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
+
+  ion-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1f2937;
+    margin-right: 12px;
+  }
+}
+
+// Botón de eliminar
+.button-delete {
+  --background: #ef4444;
+  --background-hover: #dc2626;
+  --background-activated: #b91c1c;
+  --color: white;
+  --border-radius: 10px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  margin-left: 8px;
+  height: 38px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    --background: #dc2626;
+  }
+
+  ion-icon {
+    font-size: 20px;
+  }
+}
+
+// Botón de información
+ion-button[color="primary"] {
+  --background: #3b82f6;
+  --background-hover: #2563eb;
+  --background-activated: #1d4ed8;
+  --border-radius: 10px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  margin-left: 8px;
+  height: 38px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    --background: #2563eb;
+  }
+
+  ion-icon {
+    font-size: 20px;
+  }
+}
+
+// Mensaje de "No hay tareas"
+.h-70vh {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  flex-direction: column;
+  
+  span {
+    font-size: 18px;
+    color: #6b7280;
+    font-weight: 500;
+    text-align: center;
+    padding: 20px;
+  }
+}
+
+// Mensaje de sin conexión
+.no-connection {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+  h2 {
+    color: #ef4444;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+}
+
+// Estilos para el header
+ion-header {
+  ion-toolbar {
+    --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --color: white;
+
+    ion-title {
+      font-weight: 700;
+      font-size: 24px;
+    }
+  }
+}
+
+// Contenido principal
+ion-content {
+  --background: linear-gradient(to bottom, #f9fafb 0%, #e5e7eb 100%);
+}
+
+// Animación para los items cuando aparecen
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+ion-item {
+  animation: fadeInUp 0.4s ease forwards;
+  
+  @for $i from 1 through 20 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.05}s;
+    }
+  }
+}
+
+// Estado cuando la tarea está completada
+ion-item.completed {
+  ion-label {
+    text-decoration: line-through;
+    color: #9ca3af;
+    opacity: 0.7;
+  }
+}
+
+// Responsive para pantallas pequeñas
+@media (max-width: 576px) {
+  ion-item {
+    --padding-start: 12px;
+    --padding-end: 12px;
+
+    ion-label {
+      font-size: 14px;
+    }
+
+    .button-delete,
+    ion-button[color="primary"] {
+      height: 36px;
+      --padding-start: 10px;
+      --padding-end: 10px;
+      margin-left: 6px;
+
+      ion-icon {
+        font-size: 18px;
+      }
+    }
+  }
+}
