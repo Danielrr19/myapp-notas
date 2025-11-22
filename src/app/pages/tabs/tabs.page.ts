@@ -11,7 +11,6 @@ export class TabsPage implements OnInit {
     { title: 'Home', url: 'listTask', icon: 'home' },
     { title: 'Create', url: 'createTask', icon: 'paper-plane' },
     { title: 'Completed', url: 'completedTask', icon: 'checkmark' },
-    { title: 'Tasks Api', url: 'tasksApi', icon: 'checkmark-done' },
   ];
 
   constructor() { }

@@ -1,4 +1,4 @@
-// Estilos para el header (mismo estilo que list-task)
+// Header con gradiente
 ion-header {
   ion-toolbar {
     --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -11,193 +11,161 @@ ion-header {
   }
 }
 
-// Contenedor principal
+// Contenido con fondo OSCURO
+ion-content {
+  --background: #1a1a1a;
+  --color: white;
+}
+
+// Contenedor principal centrado
 .container_input {
   width: 100%;
-  min-height: calc(100vh - 56px);
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 24px;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  padding: 24px;
-  background: linear-gradient(to bottom, #f9fafb 0%, #e5e7eb 100%);
+  gap: 16px;
+  min-height: calc(100vh - 120px);
+  justify-content: center;
 }
 
 // Lista del input
 ion-list {
-  width: 100%;
-  max-width: 500px;
   background: transparent;
   padding: 0;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 // Item del input
 ion-item {
   --background: #ffffff;
-  --border-radius: 12px;
+  --border-radius: 16px;
   --padding-start: 20px;
   --padding-end: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  margin-bottom: 16px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --border-width: 0;
+  --inner-border-width: 0;
+  margin-bottom: 0;
 
   ion-input {
     --padding-top: 16px;
     --padding-bottom: 16px;
     font-size: 16px;
     font-weight: 500;
-    color: #1f2937;
-
-    &::placeholder {
-      color: #9ca3af;
-      font-weight: 400;
-    }
+    --color: #1f2937;
   }
 }
 
 // Botones
 ion-button {
-  width: 100%;
-  max-width: 500px;
-  height: 50px;
-  margin-top: 12px;
   --border-radius: 12px;
   font-weight: 600;
-  font-size: 16px;
-  text-transform: none;
+  height: 50px;
+  font-size: 15px;
+  text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin: 0;
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
   }
 
   &:active {
     transform: translateY(0);
   }
-}
 
-// Botón de seleccionar foto
-ion-button[color="primary"] {
-  --background: #3b82f6;
-  --background-hover: #2563eb;
-  --background-activated: #1d4ed8;
-  margin-top: 20px;
+  &[color="primary"] {
+    --background: #3b82f6;
+  }
 
-  &:hover {
-    --background: #2563eb;
+  &[color="success"] {
+    --background: #22c55e;
   }
 }
 
-// Botón de guardar tarea
-ion-button[color="success"] {
-  --background: #22c55e;
-  --background-hover: #16a34a;
-  --background-activated: #15803d;
-  margin-top: 12px;
-
-  &:hover {
-    --background: #16a34a;
-  }
-}
-
-// Contenedor de previsualización de foto
-div[ng-reflect-ng-if] {
-  width: 100%;
-  max-width: 500px;
-  margin-top: 32px;
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+// Previsualización de la foto
+.ng-star-inserted {
+  margin-top: 24px;
+  text-align: center;
 
   h2 {
     font-size: 18px;
-    font-weight: 700;
-    color: #1f2937;
+    font-weight: 600;
+    color: #f3f4f6;
     margin-bottom: 16px;
-    text-align: center;
   }
 
   ion-img {
-    width: 100%;
+    max-width: 100%;
     max-height: 300px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    margin: 0 auto;
+    display: block;
     object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.1);
   }
+}
+
+// Alerta de red (si la usas)
+.network-alert {
+  background: #7f1d1d;
+  border: 2px solid #dc2626;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+  text-align: center;
+  color: #fca5a5;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
 }
 
 // Animación de entrada
-@keyframes fadeInScale {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
   }
 }
 
-ion-item,
-ion-button {
-  animation: fadeInScale 0.4s ease forwards;
-}
-
-ion-item {
-  animation-delay: 0.1s;
-}
-
-ion-button[color="primary"] {
-  animation-delay: 0.2s;
-}
-
-ion-button[color="success"] {
-  animation-delay: 0.25s;
-}
-
-// Mensaje de sin conexión
-.no-connection {
-  width: 100%;
-  max-width: 500px;
-  padding: 20px;
-  background: #fee2e2;
-  border-radius: 12px;
-  margin-top: 20px;
-  border-left: 4px solid #ef4444;
-
-  h2 {
-    color: #ef4444;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.6;
-    margin: 0;
-  }
+.container_input {
+  animation: fadeIn 0.5s ease;
 }
 
 // Responsive para móviles
 @media (max-width: 576px) {
   .container_input {
-    padding: 16px;
+    padding: 24px 16px;
+    gap: 14px;
   }
 
-  ion-list,
-  ion-button,
-  div[ng-reflect-ng-if] {
-    max-width: 100%;
+  ion-item {
+    --padding-start: 16px;
+    --padding-end: 16px;
+
+    ion-input {
+      --padding-top: 14px;
+      --padding-bottom: 14px;
+      font-size: 15px;
+    }
   }
 
   ion-button {
     height: 48px;
-    font-size: 15px;
+    font-size: 14px;
   }
 
-  div[ng-reflect-ng-if] {
+  .ng-star-inserted {
+    margin-top: 20px;
+
     h2 {
       font-size: 16px;
     }
@@ -206,12 +174,49 @@ ion-button[color="success"] {
       max-height: 250px;
     }
   }
+
+  ion-header {
+    ion-toolbar {
+      ion-title {
+        font-size: 20px;
+      }
+    }
+  }
 }
 
-// Estado de enfoque en el input
-ion-item.item-has-focus {
-  --border-color: #667eea;
-  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2);
-  transform: translateY(-2px);
-  transition: all 0.3s ease;
+// Tablets
+@media (min-width: 768px) {
+  .container_input {
+    padding: 60px 32px;
+  }
+
+  ion-item {
+    ion-input {
+      font-size: 17px;
+    }
+  }
+
+  ion-button {
+    height: 54px;
+    font-size: 16px;
+  }
+
+  .ng-star-inserted {
+    ion-img {
+      max-height: 400px;
+    }
+  }
 }
+
+// Mejora del ripple effect
+ion-button {
+  --ripple-color: rgba(255, 255, 255, 0.3);
+}
+
+// Focus state del input
+ion-item {
+  &.item-has-focus {
+    --border-color: #667eea;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+  }
+} 

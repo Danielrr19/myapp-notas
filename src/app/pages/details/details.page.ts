@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tasks } from 'src/app/models/tasks'; // Ajusta la ruta según tu proyecto
 import { AlertController } from '@ionic/angular';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-details',
@@ -14,6 +15,7 @@ export class DetailsPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private location: Location,
     private alertController: AlertController
   ) {}
 
@@ -23,6 +25,11 @@ export class DetailsPage implements OnInit {
     if (navigation?.extras.state) {
       this.task = navigation.extras.state['task'];
     }
+  }
+
+  //Funcion nueva
+  goBack() {
+    this.location.back();
   }
 
   editTask() {

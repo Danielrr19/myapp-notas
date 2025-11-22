@@ -4,25 +4,45 @@
   </ion-toolbar>
 </ion-header>
 
-<div class="container_input">
-  <ion-list>
-    <ion-item>
-      <ion-input [(ngModel)]="titleTask" aria-label="Email" placeholder="Ingresar nueva Tarea"></ion-input>
-      </ion-item>
-  </ion-list>
-
-  <ion-button (click)="selectPhoto()" color="primary">Seleccionar foto</ion-button>
+<ion-content>
+  <div class="container_input">
     
-    <ion-button (click)="addTasksFunction()" color="success">Guardar tarea</ion-button>
+    <!-- Input de la tarea -->
+    <ion-list>
+      <ion-item>
+        <ion-input 
+          [(ngModel)]="titleTask" 
+          aria-label="Tarea" 
+          placeholder="Ingresar nueva Tarea">
+        </ion-input>
+      </ion-item>
+    </ion-list>
 
+    <!-- Botones -->
+    <ion-button 
+      (click)="selectPhoto()" 
+      color="primary" 
+      expand="block">
+      Seleccionar foto
+    </ion-button>
+      
+    <ion-button 
+      (click)="addTasksFunction()" 
+      color="success" 
+      expand="block">
+      Guardar tarea
+    </ion-button>
+
+    <!-- Previsualización de la foto -->
     <div *ngIf="photoUrl">
       <h2>Previsualización de la Foto</h2>
       <ion-img [src]="photoUrl"></ion-img>
     </div>
 
-    <div *ngIf="!isOnline" [ngStyle]="{
-      
-    }">
-  
-</div>
-  
+    <!-- Alerta de red offline (si la necesitas) -->
+    <div *ngIf="!isOnline" class="network-alert">
+      Sin conexión a internet
+    </div>
+
+  </div>
+</ion-content>

@@ -30,10 +30,7 @@ const routes: Routes = [
         loadChildren: () => import('./pages/completed-task/completed-task.module').then( m => m.CompletedTaskPageModule)
       },
 
-      {
-        path: 'tasksApi',
-        loadChildren: () => import('./pages/tasks-api/tasks-api.module').then( m => m.TasksAPIPageModule)
-      },
+  
 
       {
         path: 'details/:id',

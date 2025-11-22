@@ -1,4 +1,4 @@
-// Estilos para el header (mismo estilo que las otras páginas)
+// Header con gradiente
 ion-header {
   ion-toolbar {
     --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -16,205 +16,164 @@ ion-header {
   }
 }
 
-// Estilos para el contenido
-ion-content {
-  --background: linear-gradient(to bottom, #f9fafb 0%, #e5e7eb 100%);
-  --padding-top: 20px;
-  --padding-bottom: 20px;
+// Contenido con fondo oscuro
+.dark-content {
+  --background: #1a1a1a;
+  --color: white;
 }
 
-// Card principal de detalle
-.task-detail-card {
+// Contenedor principal
+.task-detail-container {
+  max-width: 800px;
   margin: 0 auto;
-  max-width: 600px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
-  overflow: hidden;
-  background: #ffffff;
-  animation: fadeInScale 0.5s ease forwards;
+  padding: 0;
+  animation: fadeIn 0.5s ease;
 }
 
-// Contenedor de imagen
-.image-container {
-  width: 100%;
-  height: 300px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+// Imagen de la tarea
+.image-preview {
+  width: calc(100% - 32px);
+  max-height: 350px;
   overflow: hidden;
+  margin: 16px 16px 0 16px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  animation: fadeIn 0.6s ease;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
     transition: transform 0.3s ease;
-
-    &:hover {
-      transform: scale(1.05);
-    }
   }
 
-  .no-image {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    animation: pulse 2s ease-in-out infinite;
-
-    ion-icon {
-      font-size: 80px;
-      margin-bottom: 10px;
-      opacity: 0.8;
-    }
-
-    p {
-      font-size: 18px;
-      margin: 0;
-      font-weight: 500;
-      opacity: 0.9;
-    }
+  &:hover img {
+    transform: scale(1.02);
   }
 }
 
-// Header de la tarea (título + badge)
-.task-header {
+.no-image {
+  width: calc(100% - 32px);
+  height: 250px;
+  background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 24px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #f3f4f6;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 16px 16px 0 16px;
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
 
-  h1 {
+  ion-icon {
+    font-size: 64px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: #888;
     margin: 0;
-    font-size: 28px;
-    font-weight: 700;
-    color: #1f2937;
-    flex: 1;
-    margin-right: 12px;
-    line-height: 1.3;
-  }
-
-  ion-badge {
-    font-size: 12px;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
   }
 }
 
-// Sección de detalles
-.detail-section {
+// Item de detalle con estilo de tarjeta
+.detail-item {
   display: flex;
-  align-items: flex-start;
-  margin-bottom: 16px;
-  padding: 18px;
-  background-color: #f9fafb;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  background: #fff;
+  margin: 16px;
   border-radius: 12px;
-  border-left: 4px solid #667eea;
-  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   animation: slideInLeft 0.4s ease forwards;
   opacity: 0;
 
-  &:nth-child(1) { animation-delay: 0.1s; }
-  &:nth-child(2) { animation-delay: 0.2s; }
-  &:nth-child(3) { animation-delay: 0.3s; }
-
-  &:hover {
-    background-color: #f3f4f6;
-    transform: translateX(4px);
-    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
-  }
+  &:nth-child(2) { animation-delay: 0.1s; } // Estado (después de imagen)
+  &:nth-child(3) { animation-delay: 0.2s; } // Creación
+  &:nth-child(4) { animation-delay: 0.3s; } // Descripción
 
   ion-icon {
-    font-size: 28px;
-    margin-right: 16px;
-    margin-top: 2px;
-    color: #667eea;
+    font-size: 32px;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 8px;
   }
 
-  .detail-content {
+  .icon-green {
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+  }
+
+  .icon-purple {
+    color: #a855f7;
+    background: rgba(168, 85, 247, 0.1);
+  }
+
+  .icon-blue {
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+  }
+
+  .detail-text {
     flex: 1;
 
     .detail-label {
-      font-size: 12px;
-      font-weight: 700;
+      font-size: 13px;
       color: #6b7280;
+      margin: 0 0 4px 0;
+      font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
-      margin-bottom: 6px;
-      display: block;
+      letter-spacing: 0.5px;
     }
 
-    .detail-text {
-      font-size: 18px;
+    .detail-value {
+      font-size: 17px;
       color: #1f2937;
       margin: 0;
       font-weight: 600;
+      line-height: 1.4;
     }
   }
 }
 
-// Botones de acción
-.action-buttons {
-  margin-top: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+// Botón de regresar amarillo
+.back-button {
+  margin: 24px 16px 32px 16px;
+  --background: #fbbf24;
+  --background-hover: #f59e0b;
+  --background-activated: #d97706;
+  --color: #000000;
+  --border-radius: 12px;
+  font-weight: 700;
+  font-size: 17px;
+  height: 56px;
+  text-transform: none;
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+  transition: all 0.3s ease;
+  animation: slideInUp 0.5s ease 0.4s forwards;
+  opacity: 0;
 
-  ion-button {
-    margin: 0;
-    font-weight: 600;
-    height: 50px;
-    --border-radius: 12px;
-    font-size: 16px;
-    text-transform: none;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(251, 191, 36, 0.5);
+  }
 
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
-
-    &[color="primary"] {
-      --background: #3b82f6;
-      --background-hover: #2563eb;
-      --background-activated: #1d4ed8;
-
-      &:hover {
-        --background: #2563eb;
-      }
-    }
-
-    &[color="danger"] {
-      --background: #ef4444;
-      --background-hover: #dc2626;
-      --background-activated: #b91c1c;
-
-      &:hover {
-        --background: #dc2626;
-      }
-    }
+  ion-icon {
+    font-size: 22px;
+    font-weight: bold;
   }
 }
 
-// Contenido de la card
-ion-card-content {
-  padding: 24px;
-}
-
-// Mensaje de no tarea encontrada
+// Mensaje de no tarea
 .no-task {
   display: flex;
   flex-direction: column;
@@ -223,46 +182,31 @@ ion-card-content {
   min-height: 60vh;
   text-align: center;
   padding: 24px;
-  animation: fadeIn 0.5s ease;
+  color: #9ca3af;
 
   ion-icon {
-    font-size: 100px;
-    color: #9ca3af;
+    font-size: 80px;
     margin-bottom: 20px;
-    animation: bounce 2s ease-in-out infinite;
   }
 
   p {
-    font-size: 20px;
-    color: #6b7280;
+    font-size: 18px;
     margin-bottom: 28px;
-    font-weight: 500;
   }
 
-  ion-button {
-    --border-radius: 12px;
-    max-width: 250px;
-    height: 50px;
-    font-weight: 600;
-    font-size: 16px;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-    
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
-    }
+  .back-button {
+    max-width: 300px;
+    margin-top: 0;
   }
 }
 
 // Animaciones
-@keyframes fadeInScale {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: scale(0.95);
   }
   to {
     opacity: 1;
-    transform: scale(1);
   }
 }
 
@@ -277,117 +221,86 @@ ion-card-content {
   }
 }
 
-@keyframes fadeIn {
+@keyframes slideInUp {
   from {
     opacity: 0;
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.8;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-}
-
-@keyframes bounce {
-  0%, 100% {
     transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
   }
 }
 
 // Responsive para móviles
 @media (max-width: 576px) {
-  ion-content {
-    --padding-top: 12px;
-    --padding-bottom: 12px;
+  .task-detail-container {
+    padding: 0;
   }
 
-  .task-detail-card {
-    border-radius: 0;
-    margin: 0;
+  .image-preview {
+    width: calc(100% - 24px);
+    max-height: 280px;
+    margin: 12px 12px 0 12px;
+    border-radius: 14px;
+    border-width: 2px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   }
 
-  .image-container {
-    height: 250px;
-
-    .no-image {
-      ion-icon {
-        font-size: 64px;
-      }
-
-      p {
-        font-size: 16px;
-      }
-    }
-  }
-
-  .task-header {
-    margin-bottom: 20px;
-
-    h1 {
-      font-size: 22px;
-    }
-
-    ion-badge {
-      font-size: 11px;
-      padding: 6px 12px;
-    }
-  }
-
-  .detail-section {
-    padding: 14px;
+  .no-image {
+    width: calc(100% - 24px);
+    height: 200px;
+    margin: 12px 12px 0 12px;
+    border-radius: 14px;
 
     ion-icon {
-      font-size: 24px;
-      margin-right: 12px;
-    }
-
-    .detail-content {
-      .detail-text {
-        font-size: 16px;
-      }
-    }
-  }
-
-  .action-buttons {
-    margin-top: 24px;
-    gap: 10px;
-
-    ion-button {
-      height: 48px;
-      font-size: 15px;
-    }
-  }
-
-  ion-card-content {
-    padding: 20px 16px;
-  }
-
-  .no-task {
-    min-height: 50vh;
-
-    ion-icon {
-      font-size: 80px;
+      font-size: 48px;
     }
 
     p {
-      font-size: 18px;
+      font-size: 14px;
+    }
+  }
+
+  .detail-item {
+    margin: 12px;
+    padding: 16px 18px;
+    gap: 16px;
+
+    ion-icon {
+      font-size: 28px;
+      width: 36px;
+      height: 36px;
     }
 
-    ion-button {
-      height: 48px;
-      font-size: 15px;
+    .detail-text {
+      .detail-label {
+        font-size: 12px;
+      }
+
+      .detail-value {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .back-button {
+    margin: 20px 12px 28px 12px;
+    height: 52px;
+    font-size: 16px;
+
+    ion-icon {
+      font-size: 20px;
+    }
+  }
+
+  .no-task {
+    ion-icon {
+      font-size: 64px;
+    }
+
+    p {
+      font-size: 16px;
     }
   }
 
@@ -400,18 +313,57 @@ ion-card-content {
   }
 }
 
-// Estilos para tablets
+// Tablets
 @media (min-width: 768px) {
-  .task-detail-card {
-    margin-top: 20px;
+  .task-detail-container {
+    padding: 0;
   }
 
-  .image-container {
-    height: 400px;
+  .image-preview {
+    width: calc(100% - 48px);
+    max-height: 400px;
+    margin: 24px 24px 0 24px;
+    border-radius: 18px;
+    border-width: 4px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   }
-}
 
-// Mejora del ripple effect
-ion-button {
-  --ripple-color: rgba(255, 255, 255, 0.3);
+  .no-image {
+    width: calc(100% - 48px);
+    height: 300px;
+    margin: 24px 24px 0 24px;
+    border-radius: 18px;
+
+    ion-icon {
+      font-size: 80px;
+    }
+  }
+
+  .detail-item {
+    margin: 20px 24px;
+    padding: 24px 28px;
+    gap: 24px;
+
+    ion-icon {
+      font-size: 36px;
+      width: 44px;
+      height: 44px;
+    }
+
+    .detail-text {
+      .detail-label {
+        font-size: 14px;
+      }
+
+      .detail-value {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .back-button {
+    margin: 32px 24px 40px 24px;
+    height: 58px;
+    font-size: 18px;
+  }
 }
